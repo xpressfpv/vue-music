@@ -22,6 +22,7 @@
     <div class="list-fixed" v-show="fixedTitle" ref="fixed">
       <h1 class="fixed-title">{{fixedTitle}}</h1>
     </div>
+    <div>nihaoa </div>
   </scroll>
 </template>
 
