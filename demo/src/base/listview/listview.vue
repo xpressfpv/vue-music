@@ -5,6 +5,7 @@
       <li v-for="group in data" class="list-group" ref="listGroup">
         <h2 class="list-group-title">{{group.title}}</h2>
         <ul>
+          <div></div>
           <li v-for="item in group.items" class="list-group-item">
             <img class="avatar" v-lazy="item.avatar">
             <span class="name">{{item.name}}</span>
@@ -14,7 +15,7 @@
     </ul>
     <div class="list-shortcut" @touchstart="onShortcut" @touchmove.stop.prevent="onShortcutMove">
       <ul>
-        <li v-for="(item,index) in shortcutList" class="item" :class="{'current':currentIndex === index}"
+        <li :key="index" v-for="(item,index) in shortcutList" class="item" :class="{'current':currentIndex === index}"
             :data-index="index">{{item}}
         </li>
       </ul>
@@ -141,7 +142,7 @@
       },
       diff(newVal) {
         let fixedTop = (newVal > 0 && newVal < TITLE_HEIGHT) ? newVal - TITLE_HEIGHT : 0
-        if (this.fixedTopp === fixedTop) {
+        if (this.fixedTop === fixedTop) {
           return
         }
         this.fixedTop = fixedTop
